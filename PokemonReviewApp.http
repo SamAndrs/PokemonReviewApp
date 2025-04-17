@@ -1,0 +1,63 @@
+@PokemonReviewApp_HostAddress = http://localhost:5220
+
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Pokemon/
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Pokemon/1
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Pokemon/1/rating
+Accept: application/json
+
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Category/
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Category/2
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Category/Pokemon/2
+Accept: application/json
+
+
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Country/
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Country/1
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/country/owner/1
+//Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/country/owners/2
+Accept: application/json
+
+
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Owner/
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Owner/3
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Owner/pokemon/3
+Accept: application/json
+
+###
+GET {{PokemonReviewApp_HostAddress}}/api/Owner/3/pokemon
+Accept: application/json
