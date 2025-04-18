@@ -83,7 +83,7 @@ namespace PokemonReviewApp.Controllers
 
         
         // GET: country/owners/ id
-        [HttpGet("/country/owners/{countryId}")]
+        [HttpGet("/country/{countryId}/owners")]
         public IActionResult GetOwnersFromCountry(int countryId)
         {
             List<OwnerDto> owners = new List<OwnerDto>();
@@ -108,7 +108,7 @@ namespace PokemonReviewApp.Controllers
 
 
         // POST: country/ country
-        [HttpGet]
+        [HttpPost]
         public IActionResult CreateCountry([FromBody] CountryDto createCountry)
         {
             if (createCountry == null)

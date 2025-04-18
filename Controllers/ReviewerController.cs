@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
+using PokemonReviewApp.Models;
 
 namespace PokemonReviewApp.Controllers
 {
@@ -30,7 +31,7 @@ namespace PokemonReviewApp.Controllers
                     Id = reviewer.Id,
                     FirstName = reviewer.FirstName,
                     LastName = reviewer.LastName,
-                    Reviews = reviewer.Reviews
+                    //Reviews = _reviewerRepository.GetReviewsByReviewer(reviewer.Id)
                 };
 
                 reviewers.Add(newDto);
@@ -91,6 +92,38 @@ namespace PokemonReviewApp.Controllers
                 return BadRequest(ModelState);
 
             return Ok(reviews);
+        }// End
+
+        // POST
+        [HttpPost]
+        public IActionResult CreateReviewer([FromBody] ReviewerDto createReviewer)
+        {
+            if (createReviewer == null)
+                return BadRequest(ModelState);
+
+            var reviewer = _reviewerRepository.GetReviewers()
+                .Where(r => r.LastName.Trim().ToUpper() == createReviewer.LastName.TrimEnd().ToUpper())
+                .FirstOrDefault();
+
+            var newReviewer = new Reviewer()
+            {
+                Id = createReviewer.Id,
+                FirstName = createReviewer.FirstName,
+                LastName = createReviewer.LastName,
+                //Reviews = new List<Review>()
+            };
+
+
+            if(reviewer != null)
+            {
+                ModelState.AddModelError("", "Reviewer already exists");
+                return StatusCode(422, ModelState);
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok("Successfully saved!");
         }
     }
 }

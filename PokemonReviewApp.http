@@ -41,7 +41,7 @@ GET {{PokemonReviewApp_HostAddress}}/country/owner/1
 //Accept: application/json
 
 ###
-GET {{PokemonReviewApp_HostAddress}}/country/owners/2
+GET {{PokemonReviewApp_HostAddress}}/country/2/owners
 Accept: application/json
 
 

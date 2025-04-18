@@ -8,7 +8,7 @@
 
         public string LastName { get; set; }
 
-        public virtual List<Review> Reviews { get; set; }
+        public ICollection<Review>? Reviews { get; set; }
 
     }
 }

@@ -23,7 +23,6 @@ namespace PokemonReviewApp.Repository
         }
             
 
-
         public ICollection<Reviewer> GetReviewers() =>
             _context.Reviewers.ToList();
 
@@ -34,6 +33,18 @@ namespace PokemonReviewApp.Repository
 
         public bool ReviewerExists(int id) =>
             _context.Reviewers.Any(r => r.Id == id);
-        
+
+
+        public bool CreateReviewer(Reviewer reviewer)
+        {
+            _context.Reviewers.Add(reviewer);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
     }
 }
